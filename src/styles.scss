@@ -2,8 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: 34, 44, 98;
+  --primary-foreground: 255, 255, 255;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium tracking-tight;
+  }
+  h1 {
+    @apply text-5xl mb-8;
+  }
+  h2 {
+    @apply text-4xl mb-6;
+  }
+  h3 {
+    @apply text-2xl mb-5;
+  }
+  h4 {
+    @apply text-xl mb-4;
+  }
+  p {
+    @apply mb-5;
+  }
+  a {
+    @apply underline;
+  }
+  header {
+    @apply mb-8;
+  }
+  section {
+    @apply mb-8;
+  }
+  article {
+    @apply mb-8;
+  }
+}
+
+@layer utilities {
+  .button {
+    @apply border border-2 border-primary py-2 px-4 font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-colors no-underline rounded-md;
+  }
 }
