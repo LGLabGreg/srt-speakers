@@ -18,5 +18,19 @@
     <ng-template #speakersList
       ><srt-speakers-list [speakers]="data.speakers"></srt-speakers-list
     ></ng-template>
+
+    <div class="flex justify-center items-center mt-8">
+      <nav>
+        <button
+          class="button mr-5"
+          (click)="changePage(page - 1)"
+          [disabled]="page === 1"
+        >
+          Previous
+        </button>
+        <span class="font-medium">Page {{ page }}</span>
+        <button class="button ml-5" (click)="changePage(page + 1)">Next</button>
+      </nav>
+    </div>
   </ng-container>
 </section>

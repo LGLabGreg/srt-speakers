@@ -29,13 +29,22 @@ export class SpeakersComponent {
     error: this.store.select(selectError),
     speaker: this.store.select(selectSpeaker),
   });
-  params = {
-    page: 1,
-    results: 20,
-  };
+  page = 1;
+
   constructor(private store: Store) {}
 
+  getSpeakers() {
+    this.store.dispatch(
+      speakersActions.getSpeakers({ params: { page: this.page } })
+    );
+  }
+
+  changePage(page: number): void {
+    this.page = page;
+    this.getSpeakers();
+  }
+
   ngOnInit(): void {
-    this.store.dispatch(speakersActions.getSpeakers({ params: this.params }));
+    this.getSpeakers();
   }
 }
