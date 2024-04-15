@@ -1,0 +1,16 @@
+<h1>SRT Speakers</h1>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem esse
+  molestias alias nam quos dolorem placeat voluptas. Minima eius vel quibusdam
+  sit quae adipisci, fuga at eligendi, nostrum labore earum.
+</p>
+<ng-container *ngrxLet="data$ as data">
+  <p *ngIf="data.isLoading">Loading...</p>
+
+  <p *ngIf="data.error; else speakersList">
+    {{ data.error }}
+  </p>
+  <ng-template #speakersList
+    ><srt-speakers-list [speakers]="data.speakers"></srt-speakers-list
+  ></ng-template>
+</ng-container>
