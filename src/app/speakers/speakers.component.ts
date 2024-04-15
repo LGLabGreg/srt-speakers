@@ -13,6 +13,7 @@ import {
 import { speakersActions } from '@app/speakers/store/actions';
 
 import { SpeakersList } from '@app/speakers/components/speakers-list/speakers-list.component';
+import { selectSpeaker } from './store/selectors';
 
 @Component({
   selector: 'srt-speakers',
@@ -26,6 +27,7 @@ export class SpeakersComponent {
     speakers: this.store.select(selectSpeakers),
     info: this.store.select(selectInfo),
     error: this.store.select(selectError),
+    speaker: this.store.select(selectSpeaker),
   });
   params = {
     page: 1,

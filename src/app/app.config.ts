@@ -13,14 +13,18 @@ import {
   speakersReducer,
 } from '@app/speakers/store/reducers';
 import * as speakersEffects from '@app/speakers/store/effects';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     provideRouter(routes),
-    provideStore(),
+    provideStore({
+      router: routerReducer,
+    }),
     provideState(speakersFeatureKey, speakersReducer),
     provideEffects(speakersEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideRouterStore(),
   ],
 };

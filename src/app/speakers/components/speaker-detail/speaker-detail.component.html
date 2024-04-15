@@ -1,0 +1,29 @@
+<ng-container *ngrxLet="speaker$ as speaker"
+  ><div *ngIf="speaker; else speakerNotFound">
+    <a class="button" routerLink="/speakers">Back to speakers</a>
+    <header class="flex flex-col items-center">
+      <img
+        class="rounded-full aspect-square mb-2"
+        src="{{ speaker.picture.large }}"
+        alt="thumbnail"
+      />
+      <div class="font-medium text-xl mb-5">
+        {{ speaker.name.title }} {{ speaker.name.first }}
+        {{ speaker.name.last }}
+      </div>
+      <ul>
+        <li><span class="font-medium">Email: </span>{{ speaker.email }}</li>
+        <li>
+          <span class="font-medium">Address: </span>
+          {{ speaker.location.street.number }}
+          {{ speaker.location.street.name }}, {{ speaker.location.city }},
+          {{ speaker.location.postcode }}, {{ speaker.location.country }}
+        </li>
+      </ul>
+    </header>
+  </div>
+  <ng-template #speakerNotFound
+    ><h1>Speaker not found</h1>
+    <a class="button" routerLink="/speakers">Back to speakers</a></ng-template
+  ></ng-container
+>
