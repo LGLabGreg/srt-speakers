@@ -14,8 +14,6 @@
         {{ speaker.name.last }}
       </div>
     </header>
-    <a class="button" routerLink="/speakers/{{ speaker.id.value }}"
-      >View details</a
-    >
+    <button (click)="onSpeakerClick(speaker)">View details</button>
   </li>
 </ul>

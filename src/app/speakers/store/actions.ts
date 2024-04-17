@@ -3,6 +3,7 @@ import {
   SpeakersRequestInterface,
   SpeakersResponseInterface,
   SpeakersErrorInterface,
+  SpeakerInterface,
 } from '@app/speakers/types/speakers.interface';
 
 export const speakersActions = createActionGroup({
@@ -11,5 +12,6 @@ export const speakersActions = createActionGroup({
     GetSpeakers: props<{ params: SpeakersRequestInterface }>(),
     'GetSpeakers success': props<{ response: SpeakersResponseInterface }>(),
     'GetSpeakers failure': props<{ error: SpeakersErrorInterface }>(),
+    SetSelectedSpeaker: props<{ speaker: SpeakerInterface | null }>(),
   },
 });

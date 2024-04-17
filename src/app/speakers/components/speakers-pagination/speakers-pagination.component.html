@@ -1,0 +1,15 @@
+<div class="flex justify-center items-center mt-8">
+  <nav>
+    <button
+      class="button mr-5"
+      (click)="changePage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <span class="font-medium">Page {{ currentPage }}</span>
+    <button class="button ml-5" (click)="changePage(currentPage + 1)">
+      Next
+    </button>
+  </nav>
+</div>

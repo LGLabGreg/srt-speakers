@@ -1,21 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { speakersActions } from '@app/speakers/store/actions';
+import { SpeakerInterface } from '@app/speakers/types/speakers.interface';
 import { Store } from '@ngrx/store';
-import { selectSpeaker } from '@app/speakers/store/selectors';
-import { LetDirective } from '@ngrx/component';
 
 @Component({
   selector: 'srt-speaker-detail',
   templateUrl: './speaker-detail.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink, LetDirective],
 })
-export class SpeakerDetailComponent {
-  speaker$ = this.store.select(selectSpeaker);
-  params = {
-    page: 1,
-    results: 20,
-  };
+export default class SpeakerDetail {
+  @Input() speaker!: SpeakerInterface;
+
   constructor(private store: Store) {}
+
+  backToSpeakers() {
+    this.store.dispatch(speakersActions.setSelectedSpeaker({ speaker: null }));
+  }
 }

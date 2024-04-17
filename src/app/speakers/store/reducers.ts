@@ -7,6 +7,7 @@ const initialSate: SpeakersStateInterface = {
   speakers: [],
   info: null,
   error: null,
+  selectedSpeaker: null,
 };
 
 const speakersFeature = createFeature({
@@ -27,6 +28,10 @@ const speakersFeature = createFeature({
       ...state,
       isLoading: false,
       error: action.error.error,
+    })),
+    on(speakersActions.setSelectedSpeaker, (state, action) => ({
+      ...state,
+      selectedSpeaker: action.speaker,
     }))
   ),
 });
@@ -38,4 +43,5 @@ export const {
   selectSpeakers,
   selectInfo,
   selectError,
+  selectSelectedSpeaker,
 } = speakersFeature;

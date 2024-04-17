@@ -8,17 +8,25 @@ import {
   selectError,
   selectInfo,
   selectIsLoading,
+  selectSelectedSpeaker,
   selectSpeakers,
 } from '@app/speakers/store/reducers';
 import { speakersActions } from '@app/speakers/store/actions';
 
 import { SpeakersList } from '@app/speakers/components/speakers-list/speakers-list.component';
-import { selectSpeaker } from './store/selectors';
+import SpeakersPagination from './components/speakers-pagination/speakers-pagination.component';
+import SpeakerDetail from './components/speaker-detail/speaker-detail.component';
 
 @Component({
   selector: 'srt-speakers',
   standalone: true,
-  imports: [LetDirective, CommonModule, SpeakersList],
+  imports: [
+    LetDirective,
+    CommonModule,
+    SpeakersList,
+    SpeakersPagination,
+    SpeakerDetail,
+  ],
   templateUrl: './speakers.component.html',
 })
 export class SpeakersComponent {
@@ -27,7 +35,7 @@ export class SpeakersComponent {
     speakers: this.store.select(selectSpeakers),
     info: this.store.select(selectInfo),
     error: this.store.select(selectError),
-    speaker: this.store.select(selectSpeaker),
+    selectedSpeaker: this.store.select(selectSelectedSpeaker),
   });
   page = 1;
 

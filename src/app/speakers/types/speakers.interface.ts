@@ -61,4 +61,5 @@ export interface SpeakersStateInterface {
   speakers: SpeakerInterface[];
   info: SpeakersInfoInterface | null;
   error: string | null;
+  selectedSpeaker: SpeakerInterface | null;
 }

@@ -1,29 +1,18 @@
-<ng-container *ngrxLet="speaker$ as speaker"
-  ><div *ngIf="speaker; else speakerNotFound">
-    <a class="button" routerLink="/speakers">Back to speakers</a>
-    <header class="flex flex-col items-center">
-      <img
-        class="rounded-full aspect-square mb-2"
-        src="{{ speaker.picture.large }}"
-        alt="thumbnail"
-      />
-      <div class="font-medium text-xl mb-5">
-        {{ speaker.name.title }} {{ speaker.name.first }}
-        {{ speaker.name.last }}
-      </div>
-      <ul>
-        <li><span class="font-medium">Email: </span>{{ speaker.email }}</li>
-        <li>
-          <span class="font-medium">Address: </span>
-          {{ speaker.location.street.number }}
-          {{ speaker.location.street.name }}, {{ speaker.location.city }},
-          {{ speaker.location.postcode }}, {{ speaker.location.country }}
-        </li>
-      </ul>
-    </header>
-  </div>
-  <ng-template #speakerNotFound
-    ><h1>Speaker not found</h1>
-    <a class="button" routerLink="/speakers">Back to speakers</a></ng-template
-  ></ng-container
+<div
+  class="border md:w-1/2 md:mx-auto p-8 mb-8 flex flex-col items-center rounded-md"
 >
+  <img
+    class="rounded-full aspect-square w-[96px] mb-2"
+    src="{{ speaker.picture.large }}"
+    alt="thumbnail"
+  />
+  <div class="font-medium text-lg mb-2">
+    {{ speaker.name.title }} {{ speaker.name.first }}
+    {{ speaker.name.last }}
+  </div>
+  <div class="bg-slate-100 rounded-full py-1 px-4 mb-5">
+    {{ speaker.location.country }}
+  </div>
+  <a href="mailto:{{ speaker.email }}">{{ speaker.email }}</a>
+</div>
+<button type="button" (click)="backToSpeakers()">Back to speakers</button>

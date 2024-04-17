@@ -10,27 +10,24 @@
   <ng-container *ngrxLet="data$ as data">
     <div class="text-center">
       <p *ngIf="data.isLoading">Loading...</p>
-      <p *ngIf="data.error; else speakersList">
+      <p *ngIf="data.error; else speakers">
         {{ data.error }}
       </p>
     </div>
 
-    <ng-template #speakersList
-      ><srt-speakers-list [speakers]="data.speakers"></srt-speakers-list
-    ></ng-template>
-
-    <div class="flex justify-center items-center mt-8">
-      <nav>
-        <button
-          class="button mr-5"
-          (click)="changePage(page - 1)"
-          [disabled]="page === 1"
-        >
-          Previous
-        </button>
-        <span class="font-medium">Page {{ page }}</span>
-        <button class="button ml-5" (click)="changePage(page + 1)">Next</button>
-      </nav>
-    </div>
+    <ng-template #speakers>
+      <div *ngIf="data.selectedSpeaker; else speakersList">
+        <srt-speaker-detail
+          [speaker]="data.selectedSpeaker"
+        ></srt-speaker-detail>
+      </div>
+      <ng-template #speakersList
+        ><srt-speakers-list [speakers]="data.speakers"></srt-speakers-list>
+        <srt-speakers-pagination
+          [currentPage]="page"
+          ($pageChange)="changePage($event)"
+        ></srt-speakers-pagination
+      ></ng-template>
+    </ng-template>
   </ng-container>
 </section>
