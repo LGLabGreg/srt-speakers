@@ -16,7 +16,7 @@ export class SpeakersList {
 
   constructor(private store: Store) {}
 
-  onSpeakerClick(value: SpeakerInterface | null) {
+  onSpeakerClick(value: SpeakerInterface) {
     this.store.dispatch(speakersActions.setSelectedSpeaker({ speaker: value }));
   }
 }

@@ -16,6 +16,8 @@ import { speakersActions } from '@app/speakers/store/actions';
 import { SpeakersList } from '@app/speakers/components/speakers-list/speakers-list.component';
 import SpeakersPagination from './components/speakers-pagination/speakers-pagination.component';
 import SpeakerDetail from './components/speaker-detail/speaker-detail.component';
+import { SpeakerInterface } from './types/speakers.interface';
+import { SpeakersFilter } from './pipes/speakers-filter.pipe';
 
 @Component({
   selector: 'srt-speakers',
@@ -26,6 +28,7 @@ import SpeakerDetail from './components/speaker-detail/speaker-detail.component'
     SpeakersList,
     SpeakersPagination,
     SpeakerDetail,
+    SpeakersFilter,
   ],
   templateUrl: './speakers.component.html',
 })
@@ -37,7 +40,8 @@ export class SpeakersComponent {
     error: this.store.select(selectError),
     selectedSpeaker: this.store.select(selectSelectedSpeaker),
   });
-  page = 1;
+  page: number = 1;
+  filteredSpeakers: SpeakerInterface[] = [];
 
   constructor(private store: Store) {}
 
